@@ -8,16 +8,23 @@ export default function Signup() {
     <View
       style={{
         flex: 1,
-        flexDirection: "column",
-        justifyContent: "center",
         alignItems: "stretch",
         padding: 10,
       }}
     >
       {/* //กบ */}
-      <TextInput placeholder="Input ID" />
-      <TextInput placeholder="Input Email" />
-      <TextInput placeholder="Input Address" />
+      <TextInput
+        style={{ fontSize: 20, marginTop: 10 }}
+        placeholder="Input ID"
+      />
+      <TextInput
+        style={{ fontSize: 20, marginTop: 10 }}
+        placeholder="Input Email"
+      />
+      <TextInput
+        style={{ fontSize: 20, marginTop: 10, marginBottom: 10 }}
+        placeholder="Input Address"
+      />
       <Button title="Sign UP" color="red" />
     </View>
   );

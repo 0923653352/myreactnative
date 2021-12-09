@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-export default function Card() {
+export default function Review() {
   return (
     //บ่อน้ำ
     <View style={{ flex: 1 }}>
