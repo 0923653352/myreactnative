@@ -8,7 +8,7 @@ export default function Section3() {
   return (
     //บ่อน้ำ
     <View style={{ flex: 1 }}>
-      <View style={{ flexDirection: "row", padding: 15, marginTop: 20 }}>
+      <View style={{ flexDirection: "row", padding: 15, marginTop: 10 }}>
         <View
           style={{
             height: 50,

@@ -10,11 +10,13 @@ export default function Section2() {
       style={{
         flex: 1,
         alignItems: "center",
-        margin: -20,
+        margin: 10,
         padding: 20,
-        borderWidth: 1,
+        marginTop: -30,
+        borderWidth: 0.5,
+        backgroundColor: "floralwhite",
         borderColor: "gray",
-        borderRadius: 50,
+        borderRadius: 40,
       }}
     >
       <Text style={{ fontSize: 20 }}>Hilton San Franciso</Text>

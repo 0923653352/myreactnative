@@ -30,10 +30,10 @@ export default function Section7() {
         </View>
       </View>
       <View style={{ paddingLeft: 100, marginTop: -40, fontSize: 20 }}>
-        <Text>$399.99</Text>
+        <Text style={{ color: "red" }}>$399.99</Text>
       </View>
       <View style={{ paddingLeft: 100, marginTop: -1, fontSize: 20 }}>
-        <Text>Hurry Up! This is your last room!</Text>
+        <Text style={{ color: "blue" }}>Hurry Up! This is your last room!</Text>
       </View>
     </View>
   );

@@ -11,10 +11,9 @@ export default function Section1() {
         <Image
           style={{
             width: 50,
-
             flex: 1,
             resizeMode: "cover",
-            aspectRatio: 3 / 2,
+            aspectRatio: 4 / 2,
           }}
           source={require("../../assets/room-6.jpg")}
         />

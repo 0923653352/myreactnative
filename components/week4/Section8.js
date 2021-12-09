@@ -7,20 +7,22 @@ export default function Section8() {
   return (
     //บ่อน้ำ
     <View style={{ flex: 1 }}>
-      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-        <View style={{ flexDirection: "column" }}>
-          <View>
-            <Text>qweqwe</Text>
-          </View>
-          <View>
-            <Text>qweqwe</Text>
-          </View>
-          <View>
-            <Text>qwewq</Text>
-          </View>
-          <View>
-            <Button title="Sign UP" color="red" />
-          </View>
+      <View
+        style={{
+          margin: 10,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          borderWidth: 0.5,
+          padding: 5,
+        }}
+      >
+        <View>
+          <Text style={{ fontSize: 20 }}>Price</Text>
+          <Text style={{ color: "red" }}>399.99</Text>
+          <Text style={{ fontSize: 10 }}>Avg/Night</Text>
+        </View>
+        <View>
+          <Button color="red" title="Book Now" />
         </View>
       </View>
     </View>
