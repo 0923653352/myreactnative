@@ -84,10 +84,10 @@ export default function Event(props) {
                 }}
               >
                 <View style={{ padding: 10 }}>
-                  <Text style={{ color: "red", fontSize: 15 }}>
+                  <Text style={{ color: "red", fontSize: 20 }}>
                     {item.month}
                   </Text>
-                  <Text style={{ color: "gray", fontSize: 9 }}>
+                  <Text style={{ color: "gray", fontSize: 10 }}>
                     {item.date}
                   </Text>
                 </View>
@@ -95,10 +95,10 @@ export default function Event(props) {
                   <Text style={{ fontSize: 15, color: "black" }}>
                     {item.title}
                   </Text>
-                  <Text style={{ color: "gray", fontSize: 9 }}>
+                  <Text style={{ color: "gray", fontSize: 10 }}>
                     {item.datetime}
                   </Text>
-                  <Text style={{ color: "gray", fontSize: 9 }}>
+                  <Text style={{ color: "gray", fontSize: 10 }}>
                     {item.place}
                   </Text>
                 </View>

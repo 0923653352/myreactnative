@@ -1,8 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 export default function Ex12() {
+  const navigation = useNavigation();
   return (
     //บ่อน้ำ
     <View
@@ -22,6 +24,12 @@ export default function Ex12() {
       <View
         style={{ backgroundColor: "#9013FE", width: 130, height: 900 }}
       ></View>
+      <Button
+        title="Next"
+        onPress={() => {
+          navigation.navigate("Home");
+        }}
+      />
     </View>
   );
 }

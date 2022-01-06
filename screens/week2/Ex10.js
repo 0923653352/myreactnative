@@ -1,11 +1,21 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, Text, View  ,Button} from "react-native";
 
 export default function Ex10() {
+  const navigation = useNavigation();
   return (
     //บ่อน้ำ
-    <View style={styles.MainContainer}>{/* //กบ */}</View>
+    <View style={styles.MainContainer}>
+      {/* //กบ */}
+      <Button
+        title="Next"
+        onPress={() => {
+          navigation.navigate("Ex11");
+        }}
+      />
+    </View>
   );
 }
 const styles = StyleSheet.create({
