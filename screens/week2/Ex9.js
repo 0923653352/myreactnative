@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, Text, View ,Button } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 export default function Ex9() {
   const navigation = useNavigation();
