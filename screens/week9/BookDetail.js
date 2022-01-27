@@ -1,12 +1,14 @@
 import { useRoute, useNavigation } from "@react-navigation/native";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import BookStorage from "../../storages/BookStorage";
+import BookLaravel from "../../services/BookLaravel";
 
 export default function BookDetail() {
   const route = useRoute();
   const { item } = route.params;
+  const [book, setBook] = useState(item);
   //คอนเฟริ์ม กับ ลบ
   const confirmDelete = () => {
     return Alert.alert("ยืนยันการลบ?", "คุณแน่ใจหรือไม่ว่าจะลบรายการนี้?", [
@@ -14,34 +16,25 @@ export default function BookDetail() {
       {
         text: "ยืนยัน",
         onPress: () => {
-          removeProduct();
+          deleteBook();
         },
       },
     ]);
   };
-  const removeProduct = async () => {
-    try {
-      let string_value;
-      //READ ALL
-      string_value = await AsyncStorage.getItem("@products");
-      let products = string_value != null ? JSON.parse(string_value) : [];
-      //console.log("PRESS!!",products.length);
-      //INSERT NEW DATA INTO ARRAY TOP
-      if (item) {
-        let index = products.findIndex((p_item) => p_item.id == item.id);
-        //Update object's name property.
-        products.splice(index, 1);
-        console.log(products.length);
-      }
-      //WRITE
-      string_value = JSON.stringify(products);
-      await AsyncStorage.setItem("@products", string_value);
-      //REDIRECT TO
-      navigation.navigate("Book");
-    } catch (e) {
-      // saving error
-    }
+  const deleteBook = async () => {
+    //REMOVE BOOK
+    // await BookStorage.removeItem(item);
+    await BookLaravel.destroyItem(item);
+
+    //REDIRECT TO
+    navigation.navigate("Book");
   };
+
+  useEffect(async () => {
+    // let b = await BookStorage.readItemDetail(item);
+    let b = await BookLaravel.getItemDetail(item);
+    setBook(b);
+  }, []);
 
   //เพิ่มหัว ปุ่ม
   const navigation = useNavigation();
@@ -79,15 +72,14 @@ export default function BookDetail() {
       <View style={{ flexDirection: "row" }}>
         <Image
           style={{ flex: 1, resizeMode: "contain", aspectRatio: 1 / 1 }}
-          source={{ uri: item.image }}
+          source={{ uri: book.image }}
         />
       </View>
       <Text style={{ fontSize: 20, height: 70, marginVertical: 10 }}>
-        {" "}
-        {item.name}{" "}
+        {book.name}
       </Text>
       <View style={{ flexDirection: "row" }}>
-        <Text style={{ color: "green", fontSize: 20 }}>{item.price}</Text>
+        <Text style={{ color: "green", fontSize: 20 }}>{book.price}</Text>
         <Text style={{ paddingTop: 6 }}> บาท</Text>
       </View>
     </View>

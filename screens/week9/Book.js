@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import BookStorage from "../../storages/BookStorage";
+import BookLaravel from "../../services/BookLaravel";
 export default function Book() {
   const [products, setProducts] = useState([
     {
@@ -29,20 +30,25 @@ export default function Book() {
     },
   ]);
   const navigation = useNavigation();
-  const readProducts = async () => {
-    try {
-      setRefresh(true);
-      const string_value = await AsyncStorage.getItem("@products");
-      let products = string_value != null ? JSON.parse(string_value) : [];
-      setProducts(products);
-      setRefresh(false);
-    } catch (e) {
-      // error reading value
-    }
+
+  const loadBooks = async () => {
+    setRefresh(true);
+    // let products = await BookStorage.readItems();
+    let products = await BookLaravel.getItems();
+    console.log(products);
+    setProducts(products);
+    setRefresh(false);
   };
+
   useEffect(() => {
-    readProducts();
-  }, []);
+    // WHEN MOUNT AND UPDATE
+    const unsubscribe = navigation.addListener("focus", () => {
+      loadBooks();
+    });
+    // WHEN UNMOUNT
+    return unsubscribe;
+  }, [navigation]);
+
   const [refresh, setRefresh] = useState(false);
 
   return (
@@ -51,6 +57,10 @@ export default function Book() {
         data={products}
         numColumns={2}
         keyExtractor={(item) => item.id.toString()}
+        refreshing={refresh}
+        onRefresh={() => {
+          loadBooks();
+        }}
         renderItem={({ item, index }) => {
           return (
             <TouchableOpacity
