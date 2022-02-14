@@ -12,6 +12,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import BookStorage from "../../storages/BookStorage";
 import BookLaravel from "../../services/BookLaravel";
+import UploadArea from "../../components/week12/UploadArea";
 
 export default function BookForm() {
   const [id, setId] = useState(
@@ -72,6 +73,8 @@ export default function BookForm() {
           value={image}
           onChangeText={(text) => setImage(text)}
         />
+       <UploadArea image={image} setImage={setImage} />
+
       </ScrollView>
       <Button title="SAVE" color="tomato" onPress={saveBook} />
     </KeyboardAvoidingView>
