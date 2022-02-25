@@ -1,8 +1,11 @@
 // const url_endpoint = "http://localhost/mylaravel8/public/api/book";
-const url_endpoint = "http://192.168.1.3/mylaravel8/public/api/book";
+// const url_endpoint = "http://192.168.1.3/mylaravel8/public/api/book";
+import { APP_URL } from "@env";
+const url_endpoint = APP_URL+"/api/book";
 import * as mime from "mime";
 
 const getItems = async () => {
+  console.log(url_endpoint,APP_URL);
   try {
     
     let response = await fetch(url_endpoint);
@@ -28,7 +31,7 @@ const storeItem = async (item) => {
        //CREATE FORM DATA
        let data = new FormData();
        for (let key in item) {
-         if (key == "image") continue;
+        //  if (key == "image") continue;
          data.append(key, item[key]);
        }
        if (item.image.split(":")[0] == "file") {
